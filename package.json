@@ -1,0 +1,42 @@
+{
+  "name": "@jgarber/eleventy-plugin-postcss",
+  "version": "0.1.0",
+  "description": "An Eleventy plugin for processing CSS files with PostCSS.",
+  "keywords": [
+    "eleventy",
+    "eleventy-plugin",
+    "postcss"
+  ],
+  "homepage": "https://github.com/jgarber623/eleventy-plugin-postcss",
+  "bugs": "https://github.com/jgarber623/eleventy-plugin-postcss/issues",
+  "license": "MIT",
+  "author": "Jason Garber <jason@sixtwothree.org> (https://sixtwothree.org)",
+  "files": [
+    "eleventy.config.js"
+  ],
+  "type": "module",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": "./eleventy.config.js"
+  },
+  "repository": "github:jgarber623/eleventy-plugin-postcss",
+  "scripts": {
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "postcss": "^8.4.33",
+    "postcss-load-config": "^5.0.2"
+  },
+  "devDependencies": {
+    "@jgarber/eslint-config": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "11ty": {
+    "compatibility": ">=2.0.0"
+  }
+}
