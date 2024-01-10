@@ -14,10 +14,7 @@ export default function(eleventyConfig, options = {}) {
   }
 
   options = Object.assign({
-    postcssConfig: {
-      options: {},
-      plugins: []
-    }
+    postcssConfig: {},
     templateFormats: ['css', 'pcss', 'postcss']
   }, options);
 
@@ -30,7 +27,7 @@ export default function(eleventyConfig, options = {}) {
 
     init: async () => {
       try {
-        options.postcssConfig = Object.assign(options.postcssConfig, await postcssrc());
+        options.postcssConfig = await postcssrc(options.postcssConfig);
       } catch (error) {
         console.log(`WARN: Eleventy Plugin (${package_.name}): ${error.message}`);
       }
@@ -46,10 +43,10 @@ export default function(eleventyConfig, options = {}) {
 
     compile: async (inputContent, inputPath) => {
       return async ({ page }) => {
-        const { options, plugins } = options.postcssConfig;
+        const { postcssConfig } = options;
 
-        return await postcss(plugins)
-          .process(inputContent, { ...options, from: inputPath, to: page.outputPath })
+        return await postcss(postcssConfig.plugins)
+          .process(inputContent, { ...postcssConfig.options, from: inputPath, to: page.outputPath })
           .then(result => result.css);
       };
     }
