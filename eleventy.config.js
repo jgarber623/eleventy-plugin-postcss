@@ -1,10 +1,10 @@
+import fs from 'node:fs/promises';
 import path from 'node:path';
-import { readFile } from 'node:fs/promises';
 
 import postcss from 'postcss';
 import postcssrc from 'postcss-load-config';
 
-const package_ = JSON.parse(await readFile(new URL('package.json', import.meta.url)));
+const package_ = JSON.parse(await fs.readFile('./package.json'));
 
 export default function(eleventyConfig, options = {}) {
   try {
@@ -13,21 +13,24 @@ export default function(eleventyConfig, options = {}) {
     console.log(`WARN: Eleventy Plugin (${package_.name}) Compatibility: ${error.message}`);
   }
 
-  options = Object.assign({
-    postcssConfig: {},
-    templateFormats: ['css', 'pcss', 'postcss']
-  }, options);
+  let postcssConfig = {
+    options: {},
+    plugins: []
+  };
 
-  for (const templateFormat of options.templateFormats) {
-    eleventyConfig.addTemplateFormats(templateFormat);
-  }
+  options = Object.assign({
+    templateFormats: ['css', 'pcss', 'postcss'],
+    ...options
+  });
+
+  eleventyConfig.addTemplateFormats(options.templateFormats);
 
   eleventyConfig.addExtension(options.templateFormats, {
     outputFileExtension: 'css',
 
     init: async () => {
       try {
-        options.postcssConfig = await postcssrc(options.postcssConfig);
+        postcssConfig = await postcssrc();
       } catch (error) {
         console.log(`WARN: Eleventy Plugin (${package_.name}): ${error.message}`);
       }
@@ -43,10 +46,10 @@ export default function(eleventyConfig, options = {}) {
 
     compile: async (inputContent, inputPath) => {
       return async ({ page }) => {
-        const { postcssConfig } = options;
+        const { options, plugins } = postcssConfig;
 
-        return await postcss(postcssConfig.plugins)
-          .process(inputContent, { ...postcssConfig.options, from: inputPath, to: page.outputPath })
+        return await postcss(plugins)
+          .process(inputContent, { ...options, from: inputPath, to: page.outputPath })
           .then(result => result.css);
       };
     }
