@@ -1,7 +1,7 @@
-import ava from '@jgarber/eslint-config/ava';
-import config from '@jgarber/eslint-config';
+const ava = require('@jgarber/eslint-config/ava');
+const config = require('@jgarber/eslint-config');
 
-export default [
+module.exports = [
   ...config,
   ...ava
 ];

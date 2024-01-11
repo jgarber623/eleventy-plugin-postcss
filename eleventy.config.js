@@ -1,12 +1,11 @@
-import fs from 'node:fs/promises';
-import path from 'node:path';
+const path = require('node:path');
 
-import postcss from 'postcss';
-import postcssrc from 'postcss-load-config';
+const postcss = require('postcss');
+const postcssrc = require('postcss-load-config');
 
-const package_ = JSON.parse(await fs.readFile('./package.json'));
+const package_ = require('./package.json');
 
-export default function(eleventyConfig, options = {}) {
+module.exports = function(eleventyConfig, options = {}) {
   try {
     eleventyConfig.versionCheck(package_['11ty'].compatibility);
   } catch (error) {
@@ -54,4 +53,4 @@ export default function(eleventyConfig, options = {}) {
       };
     }
   });
-}
+};
