@@ -13,15 +13,19 @@ npm install --save-dev @jgarber/eleventy-plugin-postcss
 ```
 
 ```js
+// eleventy.config.js
 module.exports = function(eleventyConfig) {
-  eleventyConfig.addPlugin(require('@jgarber/eleventy-plugin-postcss'), {
-    postcssConfig: {
-      map: 'inline',
-      plugins: [
-        require('postcss-nesting'),
-        require('cssnano')
-      ]
-    }
-  });
+  eleventyConfig.addPlugin(require('@jgarber/eleventy-plugin-postcss'));
+};
+```
+
+```js
+// postcss.config.js
+module.exports = {
+  map: 'inline',
+  plugins: [
+    require('postcss-nesting'),
+    require('cssnano')
+  ]
 };
 ```
