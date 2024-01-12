@@ -8,19 +8,23 @@
 
 ## Usage
 
+First, add the plugin as [a development dependency](https://docs.npmjs.com/cli/configuring-npm/package-json#devdependencies) to your project's `package.json` file:
+
 ```sh
 npm install --save-dev @jgarber/eleventy-plugin-postcss
 ```
 
+Next, add the plugin to your project's [Eleventy configuration file](https://www.11ty.dev/docs/config/#default-filenames) (e.g. `eleventy.config.js`):
+
 ```js
-// eleventy.config.js
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(require('@jgarber/eleventy-plugin-postcss'));
 };
 ```
 
+Optionally, add a PostCSS configuration file to your project:
+
 ```js
-// postcss.config.js
 module.exports = {
   map: 'inline',
   plugins: [
@@ -29,3 +33,24 @@ module.exports = {
   ]
 };
 ```
+
+> [!TIP]
+> This plugin uses [postcss-load-config](https://github.com/postcss/postcss-load-config) which will load PostCSS configuration from your project's `package.json` or from a litany of other files. We recommend creating a file named `postcss.config.js`.
+
+### ESM Support
+
+Eleventy v3.0.0 [added bundler-free ESM support](https://www.11ty.dev/blog/canary-eleventy-v3/). This plugin works with either ESM or CommonJS projects!
+
+```js
+import postcssPlugin from '@jgarber/eleventy-plugin-postcss';
+
+export default async function(eleventyConfig) {
+  eleventyConfig.addPlugin(postcssPlugin);
+}
+```
+
+## Acknowledgments
+
+This plugin is derived from [whoisvadym/eleventy-plugin-postcss](https://github.com/whoisvadym/eleventy-plugin-postcss).
+
+eleventy-plugin-postcss is written and maintained by [Jason Garber](https://sixtwothree.org).
