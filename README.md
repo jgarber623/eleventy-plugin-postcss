@@ -14,7 +14,7 @@ First, add the plugin as [a development dependency](https://docs.npmjs.com/cli/c
 npm install --save-dev @jgarber/eleventy-plugin-postcss
 ```
 
-Next, add the plugin to your project's [Eleventy configuration file](https://www.11ty.dev/docs/config/#default-filenames) (e.g. `eleventy.config.js`):
+Next, add the plugin to your project's [Eleventy configuration file](https://www.11ty.dev/docs/config#default-filenames) (e.g. `eleventy.config.js`):
 
 ```js
 module.exports = function(eleventyConfig) {
@@ -62,7 +62,7 @@ eleventy-plugin-postcss treats files named with a leading underscore (e.g. `_var
 
 ### ESM Support
 
-Eleventy v3.0.0 [added bundler-free ESM support](https://www.11ty.dev/blog/canary-eleventy-v3/). This plugin works with either ESM or CommonJS projects!
+Eleventy v3.0.0 [added bundler-free ESM support](https://www.11ty.dev/blog/canary-eleventy-v3). This plugin works with either ESM or CommonJS projects!
 
 ```js
 import postcssPlugin from '@jgarber/eleventy-plugin-postcss';
@@ -74,6 +74,8 @@ export default async function(eleventyConfig) {
 
 ## Acknowledgments
 
-This plugin is derived from [whoisvadym/eleventy-plugin-postcss](https://github.com/whoisvadym/eleventy-plugin-postcss).
+First and foremost, eleventy-plugin-postcss wouldn't be possible without [Zach Leatherman](https://www.zachleat.com)'s incredible work creating Eleventy and his stewardship of its community.
+
+The plugin code is derived from [whoisvadym/eleventy-plugin-postcss](https://github.com/whoisvadym/eleventy-plugin-postcss).
 
 eleventy-plugin-postcss is written and maintained by [Jason Garber](https://sixtwothree.org).
