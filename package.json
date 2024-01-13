@@ -1,6 +1,6 @@
 {
   "name": "@jgarber/eleventy-plugin-postcss",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "An Eleventy plugin for processing CSS files with PostCSS.",
   "keywords": [
     "eleventy",
