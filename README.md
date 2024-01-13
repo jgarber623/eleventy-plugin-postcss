@@ -42,7 +42,7 @@ module.exports = {
 eleventy-plugin-postcss supports the following options:
 
 | Name              | Type(s)                   | Default                      |
-|:------------------|:--------------------------|------------------------------|
+|:------------------|:--------------------------|:-----------------------------|
 | `templateFormats` | `Array<String>`, `String` | `['css', 'pcss', 'postcss']` |
 
 ```js
