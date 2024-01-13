@@ -18,9 +18,8 @@ module.exports = function(eleventyConfig, options = {}) {
   };
 
   options = Object.assign({
-    templateFormats: ['css', 'pcss', 'postcss'],
-    ...options
-  });
+    templateFormats: ['css', 'pcss', 'postcss']
+  }, options);
 
   eleventyConfig.addTemplateFormats(options.templateFormats);
 
