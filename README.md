@@ -37,7 +37,7 @@ module.exports = {
 > [!TIP]
 > This plugin uses [postcss-load-config](https://github.com/postcss/postcss-load-config) which will load PostCSS configuration from your project's `package.json` or from a litany of other files. We recommend creating a file named `postcss.config.js`.
 
-### Options
+## Options
 
 eleventy-plugin-postcss supports the following options:
 
@@ -56,11 +56,11 @@ module.exports = function(eleventyConfig) {
 > [!NOTE]
 > For most use cases, the default `templateFormats` value will suffice.
 
-### Sass-style Partials Support
+## Sass-style Partials Support
 
 eleventy-plugin-postcss treats files named with a leading underscore (e.g. `_variables.css`) as [Sass-style partials](https://sass-lang.com/guide/#partials). These files **will not** be written to the output directory.
 
-### ESM Support
+## ESM Support
 
 Eleventy v3.0.0 [added bundler-free ESM support](https://www.11ty.dev/blog/canary-eleventy-v3). This plugin works with either ESM or CommonJS projects!
 
