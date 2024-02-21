@@ -1,10 +1,8 @@
-const ava = require('@jgarber/eslint-config/ava');
-const config = require('@jgarber/eslint-config');
+module.exports = (async () => {
+  const { default: config } = await import("@jgarber/eslint-config");
 
-module.exports = [
-  {
-    ignores: ['coverage']
-  },
-  ...config,
-  ...ava
-];
+  return [
+    { ignores: ["coverage"] },
+    ...config,
+  ];
+})();
