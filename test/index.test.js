@@ -38,6 +38,12 @@ test("Sass-style partials", async () => {
   const eleventy = new Eleventy("test/fixtures/partials", null, { configPath: "index.js" });
   const results = await eleventy.toJSON();
 
+  const actual = results.sort((a, b) => {
+    if (a.inputPath < b.inputPath) return -1;
+    if (a.inputPath > b.inputPath) return 1;
+    return 0;
+  });
+
   const expected = [
     {
       content: "/* Doesn't matter what's in this file, it shouldn't be written to output. */\n",
@@ -53,6 +59,6 @@ test("Sass-style partials", async () => {
     },
   ];
 
-  assert.deepStrictEqual(results, expected);
+  assert.deepStrictEqual(actual, expected);
   assert.strictEqual(console.log.mock.callCount(), 1);
 });
