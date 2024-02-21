@@ -29,8 +29,7 @@
   },
   "devDependencies": {
     "@11ty/eleventy": "^2.0.1",
-    "@jgarber/eslint-config": "^4.2.1",
-    "sinon": "^17.0.1"
+    "@jgarber/eslint-config": "^4.2.1"
   },
   "engines": {
     "node": ">=18"
