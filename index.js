@@ -1,30 +1,30 @@
-const path = require('node:path');
+const path = require("node:path");
 
-const postcss = require('postcss');
-const postcssrc = require('postcss-load-config');
+const postcss = require("postcss");
+const postcssrc = require("postcss-load-config");
 
-const package_ = require('./package.json');
+const package_ = require("./package.json");
 
 module.exports = function(eleventyConfig, options = {}) {
   try {
-    eleventyConfig.versionCheck(package_['11ty'].compatibility);
+    eleventyConfig.versionCheck(package_["11ty"].compatibility);
   } catch (error) {
     console.log(`WARN: Eleventy Plugin (${package_.name}) Compatibility: ${error.message}`);
   }
 
   let postcssConfig = {
     options: {},
-    plugins: []
+    plugins: [],
   };
 
   options = Object.assign({
-    templateFormats: ['css', 'pcss', 'postcss']
+    templateFormats: ["css", "pcss", "postcss"],
   }, options);
 
   eleventyConfig.addTemplateFormats(options.templateFormats);
 
   eleventyConfig.addExtension(options.templateFormats, {
-    outputFileExtension: 'css',
+    outputFileExtension: "css",
 
     init: async () => {
       try {
@@ -36,10 +36,10 @@ module.exports = function(eleventyConfig, options = {}) {
 
     compileOptions: {
       permalink: (inputContent, inputPath) => {
-        if (path.parse(inputPath).name.startsWith('_')) {
+        if (path.parse(inputPath).name.startsWith("_")) {
           return false;
         }
-      }
+      },
     },
 
     compile: async (inputContent, inputPath) => {
@@ -50,6 +50,6 @@ module.exports = function(eleventyConfig, options = {}) {
           .process(inputContent, { ...options, from: inputPath, to: page.outputPath })
           .then(result => result.css);
       };
-    }
+    },
   });
 };
