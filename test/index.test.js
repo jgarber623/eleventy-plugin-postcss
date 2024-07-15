@@ -34,6 +34,19 @@ test("custom templateFormats option", async () => {
   assert.strictEqual(console.log.mock.callCount(), 1);
 });
 
+test("default layout", async () => {
+  const eleventy = new Eleventy("test/fixtures/default-global-layout", null, {
+    configPath: "test/fixtures/default-global-layout/eleventy.config.js",
+  });
+
+  const results = await eleventy.toJSON();
+
+  const expected = `html {\n  font-family: sans-serif;\n}\n`;
+
+  assert.strictEqual(results[0].content, expected);
+  assert.strictEqual(console.log.mock.callCount(), 1);
+});
+
 test("Sass-style partials", async () => {
   const eleventy = new Eleventy("test/fixtures/partials", null, { configPath: "index.js" });
   const results = await eleventy.toJSON();
