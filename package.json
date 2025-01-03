@@ -1,6 +1,6 @@
 {
   "name": "@jgarber/eleventy-plugin-postcss",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "An Eleventy plugin for processing CSS files with PostCSS.",
   "keywords": [
     "eleventy",
@@ -33,7 +33,7 @@
     "@jgarber/eslint-config": "^7.0.0"
   },
   "engines": {
-    "node": ">=18.20.0 <19 || >=20.10"
+    "node": "^18.20 || >=20.10"
   },
   "publishConfig": {
     "access": "public",
