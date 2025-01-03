@@ -1,7 +1,7 @@
-const assert = require("node:assert");
-const { mock, test } = require("node:test");
+import { mock, test } from "node:test";
+import assert from "node:assert";
 
-const Eleventy = require("@11ty/eleventy");
+import Eleventy from "@11ty/eleventy";
 
 test.beforeEach(() => {
   console.log = mock.fn();
@@ -62,12 +62,14 @@ test("Sass-style partials", async () => {
       content: "/* Doesn't matter what's in this file, it shouldn't be written to output. */\n",
       inputPath: "./test/fixtures/partials/_partial.css",
       outputPath: false,
+      rawInput: "/* Doesn't matter what's in this file, it shouldn't be written to output. */\n",
       url: false,
     },
     {
       content: `html {\n  padding: 1rem;\n}\n\np {\n  font-family: cursive;\n}\n`,
       inputPath: "./test/fixtures/partials/styles.css",
-      outputPath: "_site/styles.css",
+      outputPath: "./_site/styles.css",
+      rawInput: `html {\n  padding: 1rem;\n}\n\np {\n  font-family: cursive;\n}\n`,
       url: "/styles.css",
     },
   ];

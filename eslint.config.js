@@ -1,8 +1,6 @@
-module.exports = (async () => {
-  const { default: config } = await import("@jgarber/eslint-config");
+import config from "@jgarber/eslint-config";
 
-  return [
-    { ignores: ["coverage"] },
-    ...config,
-  ];
-})();
+export default [
+  { ignores: ["coverage"] },
+  ...config,
+];

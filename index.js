@@ -1,16 +1,12 @@
-const path = require("node:path");
+import path from "node:path";
 
-const postcss = require("postcss");
-const postcssrc = require("postcss-load-config");
+import postcss from "postcss";
+import postcssrc from "postcss-load-config";
 
-const package_ = require("./package.json");
+import pkg from "./package.json" with { type: "json" };
 
-module.exports = function(eleventyConfig, options = {}) {
-  try {
-    eleventyConfig.versionCheck(package_["11ty"].compatibility);
-  } catch (error) {
-    console.log(`WARN: Eleventy Plugin (${package_.name}) Compatibility: ${error.message}`);
-  }
+export default function eleventyPluginPostcss(eleventyConfig, options = {}) {
+  eleventyConfig.versionCheck(pkg["11ty"].compatibility);
 
   let postcssConfig = {
     options: {},
@@ -26,11 +22,13 @@ module.exports = function(eleventyConfig, options = {}) {
   eleventyConfig.addExtension(options.templateFormats, {
     outputFileExtension: "css",
 
+    useLayouts: false,
+
     init: async () => {
       try {
         postcssConfig = await postcssrc();
       } catch (error) {
-        console.log(`WARN: Eleventy Plugin (${package_.name}): ${error.message}`);
+        console.log(`WARN: Eleventy Plugin (${pkg.name}): ${error.message}`);
       }
     },
 
@@ -58,4 +56,4 @@ module.exports = function(eleventyConfig, options = {}) {
       };
     },
   });
-};
+}

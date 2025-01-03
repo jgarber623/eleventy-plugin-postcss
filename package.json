@@ -1,6 +1,6 @@
 {
   "name": "@jgarber/eleventy-plugin-postcss",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "An Eleventy plugin for processing CSS files with PostCSS.",
   "keywords": [
     "eleventy",
@@ -11,6 +11,7 @@
   "bugs": "https://github.com/jgarber623/eleventy-plugin-postcss/issues",
   "license": "MIT",
   "author": "Jason Garber <jason@sixtwothree.org> (https://sixtwothree.org)",
+  "type": "module",
   "files": [
     "index.js"
   ],
@@ -18,26 +19,27 @@
     "./package.json": "./package.json",
     ".": "./index.js"
   },
-  "repository": "github:jgarber623/eleventy-plugin-postcss",
+  "repository": "https://github.com/jgarber623/eleventy-plugin-postcss",
   "scripts": {
-    "lint": "eslint .",
+    "lint": "npx eslint .",
     "test": "NODE_V8_COVERAGE=coverage node --experimental-test-coverage --test"
   },
   "dependencies": {
-    "postcss": "^8.4.33",
+    "postcss": "^8.4.49",
     "postcss-load-config": "^6.0.1"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^2.0.1",
-    "@jgarber/eslint-config": "^6.1.0"
+    "@11ty/eleventy": "^3.0.0",
+    "@jgarber/eslint-config": "^7.0.0"
   },
   "engines": {
-    "node": ">=18.8"
+    "node": ">=18.20.0 <19 || >=20.10"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   },
   "11ty": {
-    "compatibility": ">=2.0.0"
+    "compatibility": ">=3.0.0"
   }
 }

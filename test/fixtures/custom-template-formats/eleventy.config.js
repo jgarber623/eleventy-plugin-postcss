@@ -1,5 +1,7 @@
-module.exports = function(eleventyConfig) {
-  eleventyConfig.addPlugin(require("../../../"), {
+import eleventyPluginPostcss from "@jgarber/eleventy-plugin-postcss";
+
+export default function(eleventyConfig) {
+  eleventyConfig.addPlugin(eleventyPluginPostcss, {
     templateFormats: "11ty",
   });
-};
+}

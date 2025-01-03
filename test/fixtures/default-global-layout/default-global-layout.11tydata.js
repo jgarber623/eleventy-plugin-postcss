@@ -1,1 +1,1 @@
-module.exports = { layout: "layout.liquid" };
+export default { layout: "layout.liquid" };
