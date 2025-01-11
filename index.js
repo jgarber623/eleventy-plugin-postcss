@@ -33,7 +33,7 @@ export default function eleventyPluginPostcss(eleventyConfig, options = {}) {
     },
 
     compileOptions: {
-      permalink: (inputContent, inputPath) => {
+      permalink: (inputContent, inputPath) => () => {
         if (path.parse(inputPath).name.startsWith("_")) {
           return false;
         }
