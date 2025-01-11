@@ -32,12 +32,6 @@ export default function eleventyPluginPostcss(eleventyConfig, options = {}) {
       }
     },
 
-    getData: async () => {
-      return {
-        layout: false,
-      };
-    },
-
     compileOptions: {
       permalink: (inputContent, inputPath) => {
         if (path.parse(inputPath).name.startsWith("_")) {
