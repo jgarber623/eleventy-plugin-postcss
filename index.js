@@ -41,11 +41,11 @@ export default function eleventyPluginPostcss(eleventyConfig, options = {}) {
     },
 
     compile: async (inputContent, inputPath) => {
-      return async ({ page }) => {
+      return async ({ page: { outputPath } }) => {
         const { options, plugins } = postcssConfig;
 
         return await postcss(plugins)
-          .process(inputContent, { ...options, from: inputPath, to: page.outputPath })
+          .process(inputContent, { ...options, from: inputPath, to: outputPath })
           .then(result => result.css);
       };
     },
