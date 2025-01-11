@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",
-    "@jgarber/eslint-config": "^7.0.0"
+    "@jgarber/eslint-config": "^8.0.1"
   },
   "engines": {
     "node": "^18.20 || >=20.10"
