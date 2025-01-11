@@ -33,7 +33,7 @@
     "@jgarber/eslint-config": "^8.0.1"
   },
   "engines": {
-    "node": "^18.20 || >=20.10"
+    "node": "^20.11.0 || >=21.2.0"
   },
   "publishConfig": {
     "access": "public",
